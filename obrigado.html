@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Reserva enviada · Galpão Nelore</title>
+<meta name="theme-color" content="#0c0907">
+<link rel="icon" href="img/logo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Manrope:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100svh;background:radial-gradient(900px 600px at 20% 0%,rgba(224,96,44,.18),transparent 60%),#0c0907;color:#f4ece0;font:400 16px/1.6 'Manrope',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
+img.lg{height:44px;margin-bottom:46px}
+.tg{font:500 11.5px/1 'JetBrains Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#e8cd86}
+h1{font:300 clamp(42px,7vw,86px)/1 'Fraunces',serif;letter-spacing:-.03em;margin-top:20px}
+h1 em{font-style:italic;background:linear-gradient(100deg,#e0602c,#ff9a4a,#e8cd86);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+p.l{color:rgba(244,236,224,.66);max-width:46ch;margin:20px auto 0}
+.tk{margin:40px auto 0;background:#efe5d2;color:#1d1510;border-radius:4px;padding:26px 28px;max-width:480px;width:100%;text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.tk div small{display:block;font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#6e5c4b}
+.tk div b{display:block;font:400 18px/1.3 'Fraunces',serif;margin-top:6px}
+.tk .w{grid-column:1/-1;border-top:1px dashed rgba(29,21,16,.25);padding-top:12px;font:400 11px 'JetBrains Mono',monospace;color:#6e5c4b;display:flex;justify-content:space-between}
+a.b{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 30px;margin-top:34px;border-radius:4px;background:#1fae5b;color:#fff;text-decoration:none;font:600 14px 'Manrope';letter-spacing:.06em;text-transform:uppercase;box-shadow:0 14px 34px -10px rgba(31,174,91,.7)}
+a.b svg{width:22px;height:22px;fill:#fff}
+.cd{font:400 12px 'JetBrains Mono',monospace;color:rgba(244,236,224,.5);margin-top:16px}
+a.bk{display:inline-block;margin-top:30px;font:500 11px 'JetBrains Mono',monospace;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,236,224,.6);text-decoration:none;border-bottom:1px solid rgba(244,236,224,.25);padding-bottom:4px}
+</style>
+</head>
+<body>
+<img class="lg" src="img/logo.webp" alt="Galpão Nelore">
+<span class="tg">Reserva preparada</span>
+<h1>Sua mesa está <em>a caminho</em>.</h1>
+<p class="l" id="pl">Abrimos o WhatsApp da casa com tudo preenchido. É só tocar em enviar, e nossa equipe confirma a reserva por lá.</p>
+<div class="tk" id="tk" hidden></div>
+<a class="b" id="go" href="https://wa.me/554333242700"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.03c-.24.68-1.42 1.3-1.95 1.34-.5.05-.97.23-3.28-.68-2.78-1.1-4.54-3.95-4.68-4.13-.13-.18-1.12-1.49-1.12-2.84 0-1.36.71-2.02.97-2.3.25-.27.55-.34.73-.34l.53.01c.17.01.4-.06.62.48.24.56.8 1.94.87 2.08.07.14.12.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.9 1.05.93 1.93 1.22 2.2 1.36.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.61-.14.25.09 1.6.75 1.87.89.27.14.46.2.52.32.07.11.07.66-.17 1.34Z"/></svg>Abrir o WhatsApp</a>
+<p class="cd" id="cd" aria-live="polite"></p>
+<a class="bk" href="index.html">← Voltar ao site</a>
+<script>
+let d=null;try{d=JSON.parse(sessionStorage.getItem('gn_reserva'))}catch(_){}
+window.dataLayer=window.dataLayer||[];dataLayer.push({event:'page_view_obrigado'});
+if(d){
+ const tk=document.getElementById('tk');tk.hidden=false;
+ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ tk.innerHTML=[['Nome',d.nome],['Pessoas',d.pessoas],['Data',d.data],['Horário',d.horario],['Mesa',d.mesa],['Ocasião',d.ocasiao]].map(([k,v])=>`<div><small>${k}</small><b>${esc(v)}</b></div>`).join('')+`<div class="w"><span>${esc(d.id)}</span><span>Av. Higienópolis, 891</span></div>`;
+ document.getElementById('go').href=d.url;
+ try{if(!sessionStorage.getItem('gn_lead_'+d.id)){dataLayer.push({event:'generate_lead',lead_id:d.id,pessoas:d.pessoas});sessionStorage.setItem('gn_lead_'+d.id,'1')}}catch(_){}
+ let s=6;const cd=document.getElementById('cd');const tick=()=>{cd.textContent=s>0?`Abrindo o WhatsApp em ${s}s…`:'Se o WhatsApp não abriu, toque no botão acima.';if(s===0){location.href=d.url}else{s--;setTimeout(tick,1000)}};tick();
+}else{document.getElementById('pl').textContent='Fale com a nossa equipe pelo WhatsApp para reservar sua mesa.'}
+</script>
+</body>
+</html>
